@@ -1,0 +1,31 @@
+import java.util.Scanner
+
+fun main() {
+    val scanner = Scanner(System.`in`)
+
+    println("Grade Calculator Program")
+    print("Enter numeric grade (between 0 and 100): ")
+    val grade: Int? = readGrade(scanner)
+
+    if (grade != null) {
+        val letterGrade = when {
+            grade in 90..100 -> "A"
+            grade in 80 until 90 -> "B"
+            grade in 70 until 80 -> "C"
+            grade in 60 until 70 -> "D"
+            grade in 0 until 60 -> "F"
+            else -> "Invalid grade"
+        }
+
+        println("Letter grade: $letterGrade")
+    }
+}
+
+fun readGrade(scanner: Scanner): Int? {
+    return try {
+        scanner.nextInt()
+    } catch (e: Exception) {
+        println("Invalid input! Please enter a valid numeric grade.")
+        null
+    }
+}

@@ -1,0 +1,29 @@
+import java.util.Scanner
+
+fun main() {
+    val scanner = Scanner(System.`in`)
+
+    println("Discount Calculator Program")
+    print("Enter original price: ")
+    val originalPrice = scanner.nextDouble()
+
+    print("Enter discount percentage (as a decimal between 0 and 1): ")
+    var discountPercentage = scanner.nextDouble()
+
+    // Check if discount exceeds a certain threshold (e.g., 50%)
+    val maxDiscountThreshold = 0.5
+    if (discountPercentage > maxDiscountThreshold) {
+        println("Warning: Discount is too high. Setting discount to $maxDiscountThreshold.")
+        discountPercentage = maxDiscountThreshold
+    }
+
+    val finalPrice = calculateFinalPrice(originalPrice, discountPercentage)
+
+    println("Original Price: $$originalPrice")
+    println("Discount Percentage: ${(discountPercentage * 100).toInt()}%")
+    println("Final Price after Discount: $$finalPrice")
+}
+
+fun calculateFinalPrice(originalPrice: Double, discountPercentage: Double): Double {
+    return originalPrice * (1 - discountPercentage)
+}

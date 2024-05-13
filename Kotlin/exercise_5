@@ -1,0 +1,37 @@
+fun analyzeString(input: String): Triple<Int, Int, Int> {
+    // Initialize counters
+    var wordCount = 0
+    var uppercaseCount = 0
+    var vowelCount = 0
+
+    // Iterate through each character in the input string
+    for (char in input) {
+        // Count words based on spaces
+        if (char.isWhitespace()) {
+            wordCount++
+        }
+        // Count uppercase letters
+        if (char.isUpperCase()) {
+            uppercaseCount++
+        }
+        // Count vowels (both lowercase and uppercase)
+        if (char in "aeiouAEIOU") {
+            vowelCount++
+        }
+    }
+
+    // Increment word count by 1 to account for the last word
+    wordCount++
+
+    return Triple(wordCount, uppercaseCount, vowelCount)
+}
+
+fun main() {
+    val input = "Hello World! This is a Sample String with Uppercase Letters and Vowels."
+    val (wordCount, uppercaseCount, vowelCount) = analyzeString(input)
+
+    println("Input String: $input")
+    println("Number of words: $wordCount")
+    println("Number of uppercase letters: $uppercaseCount")
+    println("Number of vowels: $vowelCount")
+}
